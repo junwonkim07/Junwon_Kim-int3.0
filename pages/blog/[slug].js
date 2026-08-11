@@ -24,7 +24,7 @@ const BlogPost = ({ post }) => {
     stagger([textOne.current, textTwo.current], { y: 30 }, { y: 0 });
   }, []);
 
-  const siteUrl = 'https://junwonkim-int.netlify.app/';
+  const siteUrl = 'https://junwonkim-int.netlify.app';
 
   return (
     <>

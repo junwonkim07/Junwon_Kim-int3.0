@@ -12,7 +12,7 @@ const Edit = () => {
   // states
   const [data, setData] = useState(yourData);
   const [currentTabs, setCurrentTabs] = useState("HEADER");
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   const saveData = () => {
     if (process.env.NODE_ENV === "development") {
@@ -162,7 +162,7 @@ const Edit = () => {
       <Header isBlog></Header>
       {data.showCursor && <Cursor />}
       <div className="mt-10">
-        <div className={`${theme === "dark" ? "bg-transparent" : "bg-white"}`}>
+        <div className={`${resolvedTheme === "dark" ? "bg-transparent" : "bg-white"}`}>
           <div className="flex items-center justify-between">
             <h1 className="text-4xl">Dashboard</h1>
             <div className="flex items-center">

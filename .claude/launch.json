@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "junwon-site",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["dev"],
+      "port": 3000
+    },
+    {
+      "name": "junwon-4",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--dir",
+        "C:\\Users\\junwo\\OneDrive\\문서\\github\\Junwon_Kim-4.0",
+        "dev",
+        "--port",
+        "3001"
+      ],
+      "port": 3001
+    }
+  ]
+}

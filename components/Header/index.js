@@ -9,10 +9,12 @@ import data from "../../data/portfolio.json";
 
 const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   const { name, showBlog, showResume } = data;
+  const contactLink = data.socials.find((social) => social.title === "Email")
+    ?.link;
 
   useEffect(() => {
     setMounted(true);
@@ -35,13 +37,13 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 {data.darkMode && (
                   <Button
                     onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
+                      setTheme(resolvedTheme === "dark" ? "light" : "dark")
                     }
                   >
                     <Image
-                      alt={theme === "dark" ? "moon" : "sun"}
+                      alt={resolvedTheme === "dark" ? "moon" : "sun"}
                       src={`/images/${
-                        theme === "dark" ? "moon.svg" : "sun.svg"
+                        resolvedTheme === "dark" ? "moon.svg" : "sun.svg"
                       }`}
                       width={24}
                       height={24}
@@ -54,10 +56,10 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                     alt="menu"
                     src={`/images/${
                       !open
-                        ? theme === "dark"
+                        ? resolvedTheme === "dark"
                           ? "menu-white.svg"
                           : "menu.svg"
-                        : theme === "light"
+                        : resolvedTheme === "light"
                         ? "cancel.svg"
                         : "cancel-white.svg"
                     }`}
@@ -69,7 +71,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             </div>
             <Popover.Panel
               className={`absolute right-0 z-10 w-11/12 p-4 ${
-                theme === "dark" ? "bg-slate-800/50" : "bg-white/50"
+                resolvedTheme === "dark" ? "bg-slate-800/50" : "bg-white/50"
               } shadow-lg rounded-md backdrop-blur-lg`}
             >
               {!isBlog ? (
@@ -86,7 +88,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
+                    onClick={() => window.open(contactLink)}
                   >
                     Contact
                   </Button>
@@ -109,7 +111,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
+                    onClick={() => window.open(contactLink)}
                   >
                     Contact
                   </Button>
@@ -121,7 +123,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
       </Popover>
       <div
         className={`mt-10 hidden flex-row items-center justify-between sticky ${
-          theme === "light" ? "bg-white/50" : "dark:bg-slate-800/50"
+          resolvedTheme === "light" ? "bg-white/50" : "dark:bg-slate-800/50"
         } dark:text-white top-0 z-10 tablet:flex shadow-lg p-4 rounded-md backdrop-blur-lg`}
       >
         <h1
@@ -146,16 +148,16 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+            <Button onClick={() => window.open(contactLink)}>
               Contact
             </Button>
-            {mounted && theme && data.darkMode && (
+            {mounted && resolvedTheme && data.darkMode && (
               <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
               >
                 <Image
-                  alt={theme === "dark" ? "moon" : "sun"}
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  alt={resolvedTheme === "dark" ? "moon" : "sun"}
+                  src={`/images/${resolvedTheme === "dark" ? "moon.svg" : "sun.svg"}`}
                   width={24}
                   height={24}
                 />
@@ -177,17 +179,17 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+            <Button onClick={() => window.open(contactLink)}>
               Contact
             </Button>
 
-            {mounted && theme && data.darkMode && (
+            {mounted && resolvedTheme && data.darkMode && (
               <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
               >
                 <Image
-                  alt={theme === "dark" ? "moon" : "sun"}
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  alt={resolvedTheme === "dark" ? "moon" : "sun"}
+                  src={`/images/${resolvedTheme === "dark" ? "moon.svg" : "sun.svg"}`}
                   width={24}
                   height={24}
                 />

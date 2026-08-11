@@ -30,3 +30,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# generated at postbuild
+/public/sitemap.xml
+
+# tooling
+/.omc/

@@ -20,7 +20,7 @@ const Seo = ({
   const defaultDescription = data.aboutpara;
   const defaultKeywords =
     'portfolio, blog, web developer, react, nextjs, javascript';
-  const siteUrl = 'https://junwonkim-int.netlify.app/';
+  const siteUrl = 'https://junwonkim-int.netlify.app';
   const defaultOgImage = `${siteUrl}/images/logo.svg`;
 
   const seo = {
@@ -40,17 +40,6 @@ const Seo = ({
 
   return (
     <Head>
-      {/* Google tag (gtag.js) */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FXZ35BV5QG"></script>
-      <script>
-        {
-          `window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-FXZ35BV5QG');`
-        }
-      </script>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords} />
@@ -63,8 +52,6 @@ const Seo = ({
       <meta name="twitter:title" content={seo.twitterTitle} />
       <meta name="twitter:description" content={seo.twitterDescription} />
       <meta name="twitter:image" content={seo.twitterImage} />
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4942977426656768"
-     crossOrigin="anonymous"></script>
     </Head>
   );
 };

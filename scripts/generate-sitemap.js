@@ -2,7 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const PRETTY_URL = 'https://junwonkim-int.netlify.app/';
+const PRETTY_URL = 'https://junwonkim-int.netlify.app';
+
+// Dev-only pages. robots.txt disallows /edit, so it must not be advertised here.
+const EXCLUDED_PAGES = new Set(['edit.js']);
 
 function generateSitemap() {
   const pagesDir = path.resolve(__dirname, '../pages');
@@ -12,10 +15,15 @@ function generateSitemap() {
     .readdirSync(pagesDir)
     .filter((file) => {
       const stat = fs.statSync(path.join(pagesDir, file));
-      return !stat.isDirectory() && file.endsWith('.js') && !file.startsWith('_');
+      return (
+        !stat.isDirectory() &&
+        file.endsWith('.js') &&
+        !file.startsWith('_') &&
+        !EXCLUDED_PAGES.has(file)
+      );
     })
     .map((file) => {
-      const route = file === 'index.js' ? '' : `/${file.replace('.js', '')}`;
+      const route = file === 'index.js' ? '/' : `/${file.replace('.js', '')}`;
       return `
     <url>
       <loc>${PRETTY_URL}${route}</loc>
